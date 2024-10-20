@@ -1,39 +1,43 @@
-const p1button = document.querySelector("#p1button");
-const p2button = document.querySelector("#p2button");
-const p1display = document.querySelector("#p1display");
-const p2display = document.querySelector("#p2display");
+const p1 = {
+    score : 0,
+    button : document.querySelector("#p1button"),
+    display : document.querySelector("#p1display")
+}
+
+const p2 = {
+    score : 0,
+    button : document.querySelector("#p2button"),
+    display : document.querySelector("#p2display")
+}
+
 const resetbtn = document.querySelector("#reset");
 const playto = document.querySelector("#playto")
 
-let p1score = 0;
-let p2score = 0;
 let winningscore = 5;
 let gameover = false;
 
-//for p1 button
-p1button.addEventListener("click", function() {
+function updatescore(player, oppenent){
     if(!gameover){
-        p1score++;
-        if(p1score === winningscore){
+        player.score++;
+        if(player.score === winningscore){
             gameover = true;
-            p1display.classList.add("winner");
-            p2display.classList.add("loser");
+            player.display.classList.add("winner");
+            oppenent.display.classList.add("loser");
+            player.button.disabled = true;
+            oppenent.button.disabled = true;
         }
+        player.display.textContent = player.score;
     }
-    p1display.textContent = p1score;
+}
+
+//for p1 button
+p1.button.addEventListener("click", function() {
+    updatescore(p1, p2)
 })
 
 //for p2 button
-p2button.addEventListener("click", function() {
-    if(!gameover){
-        p2score++;
-        if(p2score === winningscore){
-            gameover = true;
-            p2display.classList.add("winner");
-            p1display.classList.add("loser");
-        }
-    }
-    p2display.textContent = p2score;
+p2.button.addEventListener("click", function() {
+    updatescore(p2,p1)
 })
 
 //select value
@@ -47,10 +51,12 @@ resetbtn.addEventListener("click",reset)
 
 function reset(){
     gameover = false;
-    p1score = 0;
-    p1display.textContent = p1score;
-    p2score = 0;
-    p2display.textContent = p2score;
-    p1display.classList.remove("winner","loser")
-    p2display.classList.remove("winner","loser")
+    p1.score = 0;
+    p1.display.textContent = p1.score;
+    p2.score = 0;
+    p2.display.textContent = p2.score;
+    p1.display.classList.remove("winner","loser")
+    p2.display.classList.remove("winner","loser")
+    p1.button.disabled = false;
+    p2.button.disabled = false;
 }
