@@ -36,3 +36,17 @@
 
 // loadstar();
 
+//fetch api again
+// fetch("https://www.eporner.com/api/v2/video/search/?query=teen&per_page=10&page=2&thumbsize=big&order=top-weekly&gay=1&lq=1&format=json")
+// .then((res) => {
+//     console.log("resolve",res);
+//     return res.json();
+// })
+// .then((data) => {
+//     console.log("jsondata", data);
+// })
+// .catch((e) => {
+//     console.log("reject",e);
+// })
+
+
