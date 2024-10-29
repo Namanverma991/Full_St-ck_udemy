@@ -34,14 +34,38 @@
 // firstcolor.hex();
 
 //class constructor
-class color{
-    constructor(r,g,b,name){
-        console.log("inside the color");
-        this.r = r;
-        this.g = g;
-        this.b = b;
+// class color{
+//     constructor(r,g,b,name){
+//         console.log("inside the color");
+//         this.r = r;
+//         this.g = g;
+//         this.b = b;
+//         this.name = name;
+//     }
+//     greet(){
+//         console.log(`hello, my name is ${this.name}`);
+//     }
+// }
+
+// const c1 = new color(255, 67, 78, "fuck")
+
+class pet{
+    constructor(name, age){
         this.name = name;
+        this.age = age;
+    }
+    eat(){
+        console.log(`${this.name} is eating`);
+    }
+}
+class cat extends pet{
+    mewo(){
+        console.log(`${this.name} is mewoing`);
     }
 }
 
-const c1 = new color(255, 67, 78, "fuck")
+class dog extends pet{
+    bark(){
+        console.log(`${this.name} is barking`);
+    }
+}
